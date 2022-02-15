@@ -1,1 +1,0 @@
-{"version":3,"sources":["About.tsx"],"names":["About"],"mappings":"mIAAA,2BAMeA,UAJS,kBACtB","file":"static/js/3.d36a32f4.chunk.js","sourcesContent":["import React from \"react\";\n\nconst About: React.FC = () => (\n  <h1>This is a PWA</h1>\n);\n\nexport default About;"],"sourceRoot":""}

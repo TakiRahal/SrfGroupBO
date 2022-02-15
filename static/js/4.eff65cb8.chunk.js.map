@@ -1,1 +1,0 @@
-{"version":3,"sources":["Home.tsx"],"names":["Home"],"mappings":"mIAAA,2BAMeA,UAJQ,kBACrB","file":"static/js/4.eff65cb8.chunk.js","sourcesContent":["import React from \"react\";\n\nconst Home: React.FC = () => (\n  <h1>Welcome to your PWA!</h1>\n);\n\nexport default Home;"],"sourceRoot":""}

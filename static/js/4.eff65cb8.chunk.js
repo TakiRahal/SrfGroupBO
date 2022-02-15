@@ -1,2 +1,0 @@
-(this["webpackJsonppwa-react-typescript"]=this["webpackJsonppwa-react-typescript"]||[]).push([[4],{29:function(t,e,c){"use strict";c.r(e);var p=c(0),r=c.n(p);e.default=function(){return r.a.createElement("h1",null,"Welcome to your PWA!")}}}]);
-//# sourceMappingURL=4.eff65cb8.chunk.js.map
