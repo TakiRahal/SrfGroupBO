@@ -1,7 +1,7 @@
 import React from "react";
 
 const App: React.FC = () => (
-  <div>BO = 123</div>
+  <div className="underline">BO = 123456789</div>
 );
 
 export default App;
