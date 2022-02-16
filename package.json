@@ -1,5 +1,5 @@
 {
-  "name": "react-pwa-app",
+  "name": "srf-group-bo",
   "version": "0.1.0",
   "homepage": "https://takirahal.github.io/SrfGroupBO",
   "private": true,
@@ -54,8 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3"
   }
 }
