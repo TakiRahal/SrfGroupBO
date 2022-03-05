@@ -88,7 +88,7 @@ export const createEntity: (entity: IFaq) => void = (entity: IFaq) => async (dis
     return result;
 };
 
-export const getEntities= (page: number, size: number, sort: string) => {
+export const getEntities = (page: number, size: number, sort: string) => {
     const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
     return {
         type: ACTION_TYPES.FETCH_FAQ_LIST,

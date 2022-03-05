@@ -10,6 +10,10 @@ export default function SiderBar() {
         history.push(ALL_APP_ROUTES.FAQ.LIST);
     }
 
+    const redirectAboutUs = () => {
+        history.push(ALL_APP_ROUTES.ABOUT_US.LIST);
+    }
+
     return (
         <div className="">
             <div className="divide-y divide-blue-200">
@@ -21,6 +25,7 @@ export default function SiderBar() {
                 <div className="p-3">02</div>
                 <div className="p-3">03</div>
                 <div className="p-3" onClick={redirectFAQ}>FAQ</div>
+                <div className="p-3" onClick={redirectAboutUs}>AboutUs</div>
             </div>
         </div>
     );
