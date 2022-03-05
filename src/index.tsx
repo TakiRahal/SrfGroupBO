@@ -4,11 +4,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import {bindActionCreators} from "redux";
+import setupAxiosInterceptors from "./core/config/axios-interceptor";
+import {clearAuthentication} from "./shared/reducers/user-reducer";
+import initStore from './core/config/store';
+import {Provider} from "react-redux";
+
+// Store initialize
+const store = initStore();
+const actions = bindActionCreators({ clearAuthentication}, store.dispatch);
+setupAxiosInterceptors(() => actions.clearAuthentication('login.error.unauthorized'));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

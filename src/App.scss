@@ -1,0 +1,13 @@
+.App{
+    height: 100%;
+    .container-app{
+        height: 100%;
+    }
+    .container-side-bar{
+        max-width: 250px;
+    }
+    main{
+        height: 100%;
+        padding-top: 120px;
+    }
+}
