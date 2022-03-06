@@ -10,13 +10,11 @@ import {IRootState} from "../../../shared/reducers";
 import {useHistory} from "react-router";
 import {ALL_APP_ROUTES} from "../../../core/config/all-app-routes";
 
-
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-import EditorConvertToHTML from "../../../shared/components/EditorConvertToHTML";
+import EditorConvertToHTML from "../../../shared/components/editor-convert-to-html/EditorConvertToHTML";
 
 
 
