@@ -1,7 +1,5 @@
 import axios from 'axios';
 import {defaultValue, ISellOffer} from "../model/sell-offer.model";
-import {clearAuthToken} from "./user-reducer";
-import {getPathApi} from "../utils/utils-functions";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 
 export const ACTION_TYPES = {
@@ -63,7 +61,7 @@ const apiUrl = 'api/sell-offer/';
 export const createEntity: (entity: any) => void = (entity: any) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.CREATE_SELLOFFER,
-        payload: axios.post(`${getPathApi(apiUrl)}create`, entity),
+        payload: axios.post(`${apiUrl}create`, entity),
     });
     return result;
 };

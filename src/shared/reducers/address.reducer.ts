@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {defaultValue, IAddress} from "../model/address.model";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
-import {getPathApi} from "../utils/utils-functions";
 
 
 export const ACTION_TYPES = {
@@ -66,7 +65,7 @@ export const getEntities = (page: number, size: number, sort: string) => {
     const requestUrl = `${apiUrl}/public${`?page=${page}&size=${size}&sort=${sort}`}`;
     return {
         type: ACTION_TYPES.FETCH_PUBLIC_ADDRESS_LIST,
-        payload: axios.get<IAddress>(getPathApi(requestUrl)),
+        payload: axios.get<IAddress>(requestUrl),
     };
 };
 

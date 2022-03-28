@@ -1,6 +1,5 @@
 import {IFaq, defaultValue} from "../model/faq.model";
 import axios from "axios";
-import {getPathApi} from "../utils/utils-functions";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 
 
@@ -83,7 +82,7 @@ const apiUrl = 'api/faq';
 export const createEntity: (entity: IFaq) => void = (entity: IFaq) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.CREATE_FAQ,
-        payload: axios.post(`${getPathApi(apiUrl)}/admin/create`, entity),
+        payload: axios.post(`${apiUrl}/admin/create`, entity),
     });
     return result;
 };
@@ -92,6 +91,6 @@ export const getEntities = (page: number, size: number, sort: string) => {
     const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
     return {
         type: ACTION_TYPES.FETCH_FAQ_LIST,
-        payload: axios.get<IFaq>(`${getPathApi(requestUrl)}/public`),
+        payload: axios.get<IFaq>(`${requestUrl}/public`),
     };
 };

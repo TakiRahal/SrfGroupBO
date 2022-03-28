@@ -1,6 +1,5 @@
 import axios from "axios";
 import {REQUEST, FAILURE, SUCCESS} from "./action-type.util";
-import {getPathApi} from "../utils/utils-functions";
 import {StorageService} from "../services/storage.service";
 import {AllAppConfig} from "../../core/config/all-config";
 import {async} from "q";
@@ -160,14 +159,14 @@ const apiUrl = 'api/user/';
 export const loginAdmin: (email: string, password: string, rememberMe?: boolean) => void = (email, password, rememberMe = false) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.LOGIN,
-        payload: axios.post(`${getPathApi(apiUrl)}public/signin-admin`, {
+        payload: axios.post(`${apiUrl}public/signin-admin`, {
             email: email,
             password: password,
             rememberMe: rememberMe
         }),
-        meta: {
-            errorMessage: 'Not role admin'
-        }
+        // meta: {
+        //     errorMessage: 'Not role admin'
+        // }
     })
     const bearerToken = result.value.headers.authorization;
     if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
@@ -186,7 +185,7 @@ export const loginAdmin: (email: string, password: string, rememberMe?: boolean)
 export const getSession: () => void = () => async (dispatch: any, getState: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.GET_SESSION,
-        payload: axios.get(`${getPathApi(apiUrl)}current-user`),
+        payload: axios.get(`${apiUrl}current-user`),
     });
 
     const account  = result?.value?.data;
@@ -200,7 +199,7 @@ export const getSession: () => void = () => async (dispatch: any, getState: any)
 export const getProfile: (userId: number) => void = (userId: number) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.GET_PROFILE,
-        payload: axios.get<IUser>(`${getPathApi(apiUrl)}public/profile/${userId}`),
+        payload: axios.get<IUser>(`${apiUrl}public/profile/${userId}`),
     });
     return result;
 };
@@ -208,7 +207,7 @@ export const getProfile: (userId: number) => void = (userId: number) => async (d
 export const getCurrentUser: () => void = () => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.GET_CURRENT_USER,
-        payload: axios.get(`${getPathApi(apiUrl)}current-user`),
+        payload: axios.get(`${apiUrl}current-user`),
     });
     return result;
 };

@@ -28,9 +28,9 @@ export const getBaseImageUrl = (path?: string) => {
  * @param {string} pathApi
  * @returns {string}
  */
-export const getPathApi = (pathApi: string) => {
-    return process.env.REACT_APP_API_END_POINT + pathApi;
-}
+// export const getPathApi = (pathApi: string) => {
+//     return process.env.REACT_APP_API_END_POINT + pathApi;
+// }
 
 /**
  *

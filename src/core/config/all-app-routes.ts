@@ -9,5 +9,18 @@ export const ALL_APP_ROUTES = {
     ABOUT_US: {
         LIST: process.env.PUBLIC_URL+'/admin/cms/about-us-list',
         ADD_UPDATE: process.env.PUBLIC_URL+'/admin/cms/about-us-add-update',
+    },
+    CATEGORY: {
+        LIST: process.env.PUBLIC_URL+'/admin/list-categories',
+        ADD_UPDATE: process.env.PUBLIC_URL+'/admin/add-update-category',
+    },
+    CONTACT_US: {
+        LIST: process.env.PUBLIC_URL+'/admin/list-contact-us'
+    },
+    OFFER: {
+        DESCRIPTION_ADD_OFFER: {
+            LIST: process.env.PUBLIC_URL+'/admin/offer/list-description',
+            ADD: process.env.PUBLIC_URL+'/admin/offer/add-description'
+        }
     }
 }

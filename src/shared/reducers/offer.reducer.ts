@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {defaultValue, IOffer} from "../model/offer.model";
-import {getPathApi} from "../utils/utils-functions";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 import {defaultValueOFU, IOfferFavoriteUser} from "../model/offer-favorite-user";
 
@@ -114,7 +113,7 @@ export const getEntities = (page: number, size: number, sort: string) => {
     const requestUrl = `${apiUrl + '/public'}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
     return {
         type: ACTION_TYPES.FETCH_OFFER_LIST,
-        payload: axios.get<IOffer>(`${getPathApi(requestUrl)}`),
+        payload: axios.get<IOffer>(`${requestUrl}`),
     };
 };
 
@@ -147,7 +146,7 @@ export const getEntitywithFavorite = (id: string) => {
     const requestUrl = `${apiUrl}/public/${id}`;
     return {
         type: ACTION_TYPES.FETCH_OFFER,
-        payload: axios.get<IOfferFavoriteUser>(`${getPathApi(requestUrl)}`),
+        payload: axios.get<IOfferFavoriteUser>(`${requestUrl}`),
     };
 };
 
@@ -155,7 +154,7 @@ export const getPublicEntitiesForUser = (page: number, size: number, sort: strin
     const requestUrl = `${apiUrl + '/public'}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
     return {
         type: ACTION_TYPES.FETCH_OFFER_LIST_FOR_USER,
-        payload: axios.get<any>(`${getPathApi(requestUrl)}?user.id=${userId}`),
+        payload: axios.get<any>(`${requestUrl}?user.id=${userId}`),
     };
 };
 
@@ -205,7 +204,7 @@ export const setBlob = (name: string, data: string, contentType?: string) => ({
 export const uploadFiles: (entity: FormData) => void = (entity: FormData) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.UPLOAD_FILE_OFFER,
-        payload: axios.post(`${getPathApi(apiUrl)}upload-images`, entity),
+        payload: axios.post(`${apiUrl}upload-images`, entity),
     });
     return result;
 };

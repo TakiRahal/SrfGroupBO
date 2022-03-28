@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {defaultValue, IRentOffer} from "../model/rent-offer.model";
-import {getPathApi} from "../utils/utils-functions";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 
 
@@ -82,7 +81,7 @@ export const getEntity = (id: number) => {
 export const createEntity: (entity: any) => void = (entity: any) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.CREATE_RENTOFFER,
-        payload: axios.post(`${getPathApi(apiUrl)}create`, entity)
+        payload: axios.post(`${apiUrl}create`, entity)
     });
     return result;
 };

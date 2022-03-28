@@ -29,11 +29,17 @@ export const Faq = (props: IFaqProps) => {
     return (
         <div className="rounded-2xl">
 
-            <button className="px-6 py-2  my-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100"
-                    type="submit"
-            onClick={redirectToAddUpdate}>
-                Add new FAQ
-            </button>
+            <div className="flex">
+                <div className="flex-1">
+                    List of FAQ
+                </div>
+                <div className="">
+                    <button className="px-6 py-2  my-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100"
+                            onClick={redirectToAddUpdate}>
+                        Add new FAQ
+                    </button>
+                </div>
+            </div>
 
             <table className="border-collapse border border-slate-400 w-full">
                 <thead className="bg-gray-200">
@@ -54,7 +60,10 @@ export const Faq = (props: IFaqProps) => {
                                 <td className="border border-slate-100">{faq.id}</td>
                                 <td className="border border-slate-100">{faq.questionAr}</td>
                                 <td className="border border-slate-100">{faq.responseAr}</td>
-                                <td className="border border-slate-100">Edit / Delete</td>
+                                <td className="border border-slate-100">
+                                    <button className="px-6 py-2 rounded bg-green-600 hover:bg-green-700 text-white mx-2">Edit</button>
+                                    <button className="px-6 py-2 rounded bg-rose-400 hover:bg-rose-500 text-rose-100">Delete</button>
+                                </td>
                             </tr>
                             <tr>
                                 <td className="border border-slate-100">Fr</td>

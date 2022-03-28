@@ -1,6 +1,5 @@
 import {defaultValue, IAboutUs} from "../model/about-us.model";
 import axios from "axios";
-import {getPathApi} from "../utils/utils-functions";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 
 
@@ -81,7 +80,7 @@ export const getEntity = () => {
     const requestUrl = `${apiUrl}`;
     return {
         type: ACTION_TYPES.FETCH_ABOUTUS,
-        payload: axios.get<IAboutUs>(`${getPathApi(requestUrl)}`),
+        payload: axios.get<IAboutUs>(`${requestUrl}`),
     };
 };
 
@@ -89,7 +88,7 @@ export const getEntity = () => {
 export const createEntity: (entity: IAboutUs) => void = (entity: IAboutUs) => async (dispatch: any) => {
     const result = await dispatch({
         type: ACTION_TYPES.CREATE_ABOUTUS,
-        payload: axios.post(`${getPathApi(apiUrl)}/admin`, entity),
+        payload: axios.post(`${apiUrl}/admin`, entity),
     });
     return result;
 };
@@ -99,6 +98,6 @@ export const getEntities = (page: number, size: number, sort: string) => {
     const requestUrl = `${apiUrl}/admin${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
     return {
         type: ACTION_TYPES.FETCH_ABOUTUS_LIST,
-        payload: axios.get<IAboutUs>(`${getPathApi(requestUrl)}`),
+        payload: axios.get<IAboutUs>(`${requestUrl}`),
     };
 };

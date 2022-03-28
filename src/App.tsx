@@ -1,12 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import SiderBar from "./shared/layout/side-bar/SideBar";
-import LayoutRoutes from "./shared/layout-routes/LayoutRoutes";
-import Header from "./shared/layout/header/Header";
-import Footer from "./shared/layout/footer/Footer";
 import {
-    BrowserRouter as Router, Link, Route, Switch, useHistory
+    BrowserRouter as Router, Link, Route, Switch
 } from "react-router-dom";
 import {ALL_APP_ROUTES} from "./core/config/all-app-routes";
 import SignIn from "./main-features/signin/SignIn";
@@ -15,6 +10,8 @@ import {IRootState} from "./shared/reducers";
 import {logout} from "./shared/reducers/user-reducer";
 import {connect} from "react-redux";
 import { hot } from 'react-hot-loader';
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface IAppProps extends StateProps, DispatchProps {}
 
@@ -22,6 +19,9 @@ function App(props: IAppProps) {
   return (
       <Router>
           <div className="App">
+
+              <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
+
               <Switch>
                   <Route path={ALL_APP_ROUTES.SIGNIN}>
                       <SignIn />
