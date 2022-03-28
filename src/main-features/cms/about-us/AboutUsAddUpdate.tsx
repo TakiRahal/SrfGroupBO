@@ -9,12 +9,7 @@ import { createEntity as createEntityAboutUs } from '../../../shared/reducers/ab
 import {IRootState} from "../../../shared/reducers";
 import {useHistory} from "react-router";
 import {ALL_APP_ROUTES} from "../../../core/config/all-app-routes";
-
-import { EditorState, convertToRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
-import EditorConvertToHTML from "../../../shared/components/editor-convert-to-html/EditorConvertToHTML";
+import {CustomSunEditor} from "../../../shared/components/sun-editor/CustomSunEditor";
 
 
 
@@ -48,9 +43,6 @@ export const AboutUsAddUpdate = (props: IAboutUsUpdateProps) => {
         }
     }, [addSuccessAbout])
 
-
-    const editorState = EditorState.createEmpty();
-
     const onEditorStateChangeAr = (editorState: any) => {
         formik.setFieldValue('contentAr', editorState);
     };
@@ -68,15 +60,15 @@ export const AboutUsAddUpdate = (props: IAboutUsUpdateProps) => {
 
                 <div className="flex flex-col w-full">
                     <div className="mb-5">
-                        <EditorConvertToHTML callBackParent={onEditorStateChangeAr} placeholder="Write your content Ar"/>
+                        <CustomSunEditor defaultValue='' callbcakHandleChange={onEditorStateChangeAr}/>
                         <span className="text-xs text-red-700" id="questionAr">{formik.touched.contentAr && formik.errors.contentAr}</span>
                     </div>
                     <div className="mb-5">
-                        <EditorConvertToHTML callBackParent={onEditorStateChangeFr} placeholder="Write your content Fr"/>
+                        <CustomSunEditor defaultValue='' callbcakHandleChange={onEditorStateChangeFr}/>
                         <span className="text-xs text-red-700" id="questionAr">{formik.touched.contentFr && formik.errors.contentFr}</span>
                     </div>
                     <div className="mb-5">
-                        <EditorConvertToHTML callBackParent={onEditorStateChangeEn} placeholder="Write your content En"/>
+                        <CustomSunEditor defaultValue='' callbcakHandleChange={onEditorStateChangeEn}/>
                         <span className="text-xs text-red-700" id="questionAr">{formik.touched.contentEn && formik.errors.contentEn}</span>
                     </div>
                 </div>

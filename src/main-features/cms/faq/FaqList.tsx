@@ -14,7 +14,6 @@ export const Faq = (props: IFaqProps) => {
     const history = useHistory();
 
     const { getEntitiesFaq,
-        loadingEntitiesFaq,
         entitiesFaq
     } = props;
 
