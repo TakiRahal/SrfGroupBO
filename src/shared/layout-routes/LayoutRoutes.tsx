@@ -11,6 +11,7 @@ import ListCategories from "../../main-features/category/ListCategories";
 import ContactUsList from "../../main-features/cms/contact-us/ContactUsList";
 import ListDescriptionAddOffer from "../../main-features/offer/ListDescriptionAddOffer";
 import AddUpdateDescriptionAddOffer from "../../main-features/offer/AddUpdateDescriptionAddOffer";
+import ListNewsLetter from "../../main-features/news-letter/ListNewsLetter";
 
 export default function LayoutRoutes() {
     return (
@@ -52,6 +53,10 @@ export default function LayoutRoutes() {
             </Route>
             <Route exact path={ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.ADD}>
                 <AddUpdateDescriptionAddOffer />
+            </Route>
+
+            <Route exact path={ALL_APP_ROUTES.NEWS_LETTER}>
+                <ListNewsLetter />
             </Route>
 
             {/*<Route path="*">*/}

@@ -11,6 +11,7 @@ import aboutUs, {AboutUsState} from "./about-us.reducer";
 import category, {CategoryState} from "./category.reducer";
 import contactUs, {ContactUsState} from "./contact-us.reducer";
 import descriptionAddOffer, {DescriptionAddOfferState} from "./description-add-offer.reducer";
+import newsLetter, {NewsLetterState} from "./news-letter.reducer";
 
 export interface IRootState {
     readonly user: UserState;
@@ -25,6 +26,7 @@ export interface IRootState {
     readonly category: CategoryState;
     readonly contactUs: ContactUsState;
     readonly descriptionAddOffer: DescriptionAddOfferState;
+    readonly newsLetter: NewsLetterState;
 }
 
 const rootReducer = combineReducers<IRootState>({
@@ -39,7 +41,8 @@ const rootReducer = combineReducers<IRootState>({
     aboutUs,
     category,
     contactUs,
-    descriptionAddOffer
+    descriptionAddOffer,
+    newsLetter
 });
 
 export default rootReducer;

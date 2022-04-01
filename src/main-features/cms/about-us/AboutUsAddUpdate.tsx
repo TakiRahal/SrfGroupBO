@@ -23,8 +23,6 @@ export const AboutUsAddUpdate = (props: IAboutUsUpdateProps) => {
     const history = useHistory();
 
     const {
-        loadingEntityAbout,
-        entityAbout,
         addSuccessAbout,
         createEntityAboutUs
     } = props;

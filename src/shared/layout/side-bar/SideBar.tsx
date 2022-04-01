@@ -19,6 +19,9 @@ export default function SiderBar() {
             </div>
 
             <div className="divide-y divide-blue-200">
+
+                <div className="p-3 cursor-pointer hover:bg-purple-100" onClick={() => redirectTo(ALL_APP_ROUTES.DASHBOARD)}>Dashboard</div>
+
                 <div className="">
                     <Disclosure>
                         {({ open }) => (
@@ -101,6 +104,7 @@ export default function SiderBar() {
                         )}
                     </Disclosure>
                 </div>
+                <div className="p-3 cursor-pointer hover:bg-purple-100" onClick={() => redirectTo(ALL_APP_ROUTES.NEWS_LETTER)}>NewsLetter</div>
                 <div className="p-3">03</div>
 
             </div>

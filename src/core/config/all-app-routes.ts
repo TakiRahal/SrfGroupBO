@@ -22,5 +22,6 @@ export const ALL_APP_ROUTES = {
             LIST: process.env.PUBLIC_URL+'/admin/offer/list-description',
             ADD: process.env.PUBLIC_URL+'/admin/offer/add-description'
         }
-    }
+    },
+    NEWS_LETTER: process.env.PUBLIC_URL+'/admin/list-news-letter'
 }

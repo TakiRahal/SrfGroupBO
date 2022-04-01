@@ -34,7 +34,7 @@ export const AboutUsList = (props: IAboutUsListProps) => {
             <button className="px-6 py-2  my-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100"
                     type="submit"
                     onClick={redirectToAddUpdate}>
-                Add new FAQ
+                Add new About Us
             </button>
 
             <table className="border-collapse border border-slate-400 w-full">
