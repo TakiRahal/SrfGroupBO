@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import isEmpty from 'lodash/isEmpty'
 import {useFormik} from "formik";
 import {initialValuesTopHomeSlidesImage, validationSchemaTopHomeSlidesImage} from "./validation/validation-home";
-import {dataUrlToFile} from "../../shared/utils/utils-functions";
+import {dataUrlToFile, getBase64} from "../../shared/utils/utils-functions";
 import {getImageUrl} from "../../shared/utils/image-url";
 import {reset, getEntity, createEntity} from "../../shared/reducers/top-home-slides-image";
 import {useHistory, useParams} from "react-router";
@@ -38,12 +38,13 @@ export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageP
     });
 
     const selectFile = (event: any) => {
-        getImageUrl(event.target.files[0], 500)
+        getBase64(event.target.files[0])
             .then((result: any) => {
                 dataUrlToFile(result, event.target.files[0].name)
                     .then((value: any) => {
                         setImageUpload(value);
                     })
+                console.log(result);
                 setFileState(result);
             });
     };

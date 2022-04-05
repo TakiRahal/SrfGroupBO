@@ -1,7 +1,6 @@
 import axios from "axios";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
 import {defaultValue, ITopHomeSlidesImages} from "../model/top-home-slides-images.model";
-import {ITopHomeSlides} from "../model/top-home-slides.model";
 
 
 export const ACTION_TYPES = {
@@ -117,7 +116,7 @@ export const getEntities = () => {
     const requestUrl = `${apiUrl}/public/slides`;
     return {
         type: ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE_LIST,
-        payload: axios.get<ITopHomeSlides>(`${requestUrl}`),
+        payload: axios.get<ITopHomeSlidesImages>(`${requestUrl}`),
     };
 };
 
@@ -133,7 +132,7 @@ export const getEntity = (id: number) => {
     const requestUrl = `${apiUrl}/admin/${id}`;
     return {
         type: ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE,
-        payload: axios.get<ITopHomeSlides>(requestUrl),
+        payload: axios.get<ITopHomeSlidesImages>(requestUrl),
     };
 };
 //

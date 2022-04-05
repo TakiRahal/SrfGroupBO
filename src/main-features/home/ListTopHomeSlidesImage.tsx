@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {getEntities} from "../../shared/reducers/top-home-slides-image";
 import {ALL_APP_ROUTES} from "../../core/config/all-app-routes";
 import {useHistory} from "react-router";
-import {ITopHomeSlides} from "../../shared/model/top-home-slides.model";
 import React from "react";
 import {ITopHomeSlidesImages} from "../../shared/model/top-home-slides-images.model";
 
@@ -43,18 +42,12 @@ export const ListTopHomeSlidesImage = (props: ITopHomeSlidesImageProps) => {
             <table className="border-collapse border border-slate-400 w-full">
                 <thead className="bg-gray-200">
                 <tr>
-                    <th>#</th>
                     <th className="border border-slate-300">ID</th>
-                    {/*<th className="border border-slate-300">titleAr</th>*/}
-                    {/*<th className="border border-slate-300">titleFr</th>*/}
-                    {/*<th className="border border-slate-300">titleEn</th>*/}
-                    {/*<th className="border border-slate-300">subTitleAr</th>*/}
-                    {/*<th className="border border-slate-300">subTitleFr</th>*/}
-                    {/*<th className="border border-slate-300">subTitleEn</th>*/}
                     <th className="border border-slate-300">descriptionAr</th>
                     <th className="border border-slate-300">descriptionFr</th>
                     <th className="border border-slate-300">descriptionEn</th>
                     <th className="border border-slate-300">Image</th>
+                    <th className="border border-slate-300">Actions</th>
                 </tr>
                 </thead>
 
@@ -62,20 +55,13 @@ export const ListTopHomeSlidesImage = (props: ITopHomeSlidesImageProps) => {
                     props.entities.map((topHomeSlides: ITopHomeSlidesImages, i) => (
                         <tbody className="bg-white" key={`entity-${i}`}>
                         <tr >
-                            <td className="border border-slate-100">Ar</td>
                             <td className="border border-slate-100">{topHomeSlides.id}</td>
-                            {/*<td className="border border-slate-100">{topHomeSlides.titleAr}</td>*/}
-                            {/*<td className="border border-slate-100">{topHomeSlides.titleFr}</td>*/}
-                            {/*<td className="border border-slate-100">{topHomeSlides.titleEn}</td>*/}
-                            {/*<td className="border border-slate-100">{topHomeSlides.subTitleAr}</td>*/}
-                            {/*<td className="border border-slate-100">{topHomeSlides.subTitleFr}</td>*/}
-                            {/*<td className="border border-slate-100">{topHomeSlides.subTitleEn}</td>*/}
                             <td className="border border-slate-100"><div dangerouslySetInnerHTML={{ __html: topHomeSlides.descriptionAr || '' }}></div></td>
                             <td className="border border-slate-100"><div dangerouslySetInnerHTML={{ __html: topHomeSlides.descriptionFr || '' }}></div></td>
                             <td className="border border-slate-100"><div dangerouslySetInnerHTML={{ __html: topHomeSlides.descriptionEn || '' }}></div></td>
                             <td className="border border-slate-100">
                                 {
-                                    topHomeSlides.image ? <img src={topHomeSlides.image} width={200} height={200}/> : null
+                                    topHomeSlides.image ? <img src={topHomeSlides.image} width={250} height={250}/> : null
                                 }
                             </td>
                             <td className="border border-slate-100">

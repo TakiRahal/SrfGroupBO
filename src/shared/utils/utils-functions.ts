@@ -11,9 +11,18 @@ export const isPromise = (value: any): boolean => {
 };
 
 
-// export const getPathAbsolute = () => {
-//     return '/SrfGroupFE';
-// }
+export const getBase64 = (file: any) => {
+    return new Promise((resolve, reject) => {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            resolve(reader.result);
+        };
+        reader.onerror = function (error) {
+            reject(error);
+        };
+    })
+}
 
 /**
  *
@@ -86,7 +95,7 @@ export function useQuery() {
 export async function dataUrlToFile(dataUrl: string, fileName: string): Promise<File> {
     const res: Response = await fetch(dataUrl);
     const blob: Blob = await res.blob();
-    return new File([blob], fileName, { type: 'image/png' });
+    return new File([blob], fileName, { type: 'image/jpeg' });
 }
 
 

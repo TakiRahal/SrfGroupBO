@@ -14,8 +14,6 @@ import AddUpdateDescriptionAddOffer from "../../main-features/offer/AddUpdateDes
 import ListNewsLetter from "../../main-features/news-letter/ListNewsLetter";
 import ListTopHomeSlidesImage from "../../main-features/home/ListTopHomeSlidesImage";
 import AddUpdateTopHomeSlidesImage from "../../main-features/home/AddUpdateTopHomeSlidesImage";
-import ListTopHomeSlides from "../../main-features/home/ListTopHomeSlides";
-import AddUpdateTopHomeSlides from "../../main-features/home/AddUpdateTopHomeSlides";
 
 export default function LayoutRoutes() {
     return (
@@ -59,16 +57,6 @@ export default function LayoutRoutes() {
                 <AddUpdateDescriptionAddOffer />
             </Route>
 
-
-            {/*<Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.LIST}>*/}
-                {/*<ListTopHomeSlides />*/}
-            {/*</Route>*/}
-            {/*<Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.ADD_UPDATE}>*/}
-                {/*<AddUpdateTopHomeSlides />*/}
-            {/*</Route>*/}
-            {/*<Route path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.ADD_UPDATE + '/:id/edit'}>*/}
-                {/*<AddUpdateTopHomeSlides />*/}
-            {/*</Route>*/}
             <Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.LIST}>
                 <ListTopHomeSlidesImage />
             </Route>

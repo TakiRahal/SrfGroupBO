@@ -12,7 +12,6 @@ import category, {CategoryState} from "./category.reducer";
 import contactUs, {ContactUsState} from "./contact-us.reducer";
 import descriptionAddOffer, {DescriptionAddOfferState} from "./description-add-offer.reducer";
 import newsLetter, {NewsLetterState} from "./news-letter.reducer";
-import topHomeSlides, {TopHomeSlidesState} from "./top-home-slides";
 import topHomeSlidesImages, {TopHomeSlidesImagesState} from "./top-home-slides-image";
 
 export interface IRootState {
@@ -29,7 +28,6 @@ export interface IRootState {
     readonly contactUs: ContactUsState;
     readonly descriptionAddOffer: DescriptionAddOfferState;
     readonly newsLetter: NewsLetterState;
-    readonly topHomeSlides: TopHomeSlidesState;
     readonly topHomeSlidesImages: TopHomeSlidesImagesState;
 }
 
@@ -47,7 +45,6 @@ const rootReducer = combineReducers<IRootState>({
     contactUs,
     descriptionAddOffer,
     newsLetter,
-    topHomeSlides,
     topHomeSlidesImages
 });
 
