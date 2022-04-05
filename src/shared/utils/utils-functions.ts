@@ -77,6 +77,18 @@ export function useQuery() {
 }
 
 
+/**
+ *
+ * @param {string} dataUrl
+ * @param {string} fileName
+ * @returns {Promise<File>}
+ */
+export async function dataUrlToFile(dataUrl: string, fileName: string): Promise<File> {
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    return new File([blob], fileName, { type: 'image/png' });
+}
+
 
 export const convertDateTimeFromServer = (date: Date) => (date ? dayjs(date).format(APP_LOCAL_DATETIME_FORMAT) : null);
 

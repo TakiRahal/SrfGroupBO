@@ -55,11 +55,6 @@ export default (state: OfferState = initialState, action: any): OfferState => {
                 entities: action.payload.data.content,
                 totalItems: action.payload.data.totalElements
             };
-        case ACTION_TYPES.RESET:
-            return {
-                ...initialState,
-            };
-
 
         case REQUEST(ACTION_TYPES.FETCH_OFFER):
             return {
@@ -98,6 +93,13 @@ export default (state: OfferState = initialState, action: any): OfferState => {
                 entitiesForUser: action.payload.data.content,
             };
         }
+
+
+        case ACTION_TYPES.RESET:
+            return {
+                ...initialState,
+            };
+
 
         default:
             return state;

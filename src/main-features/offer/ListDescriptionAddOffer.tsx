@@ -31,7 +31,7 @@ export const ListDescriptionAddOffer = (props: IDescriptionAddOfferProps) => {
                 </div>
                 <div className="">
                     <button className="px-6 py-2  my-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100"
-                            onClick={() => redirectTo(ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.ADD)}>
+                            onClick={() => redirectTo(ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.ADD_UPDATE)}>
                         Add new Description Offer
                     </button>
                 </div>

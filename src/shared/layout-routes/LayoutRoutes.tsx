@@ -12,6 +12,10 @@ import ContactUsList from "../../main-features/cms/contact-us/ContactUsList";
 import ListDescriptionAddOffer from "../../main-features/offer/ListDescriptionAddOffer";
 import AddUpdateDescriptionAddOffer from "../../main-features/offer/AddUpdateDescriptionAddOffer";
 import ListNewsLetter from "../../main-features/news-letter/ListNewsLetter";
+import ListTopHomeSlidesImage from "../../main-features/home/ListTopHomeSlidesImage";
+import AddUpdateTopHomeSlidesImage from "../../main-features/home/AddUpdateTopHomeSlidesImage";
+import ListTopHomeSlides from "../../main-features/home/ListTopHomeSlides";
+import AddUpdateTopHomeSlides from "../../main-features/home/AddUpdateTopHomeSlides";
 
 export default function LayoutRoutes() {
     return (
@@ -51,9 +55,30 @@ export default function LayoutRoutes() {
             <Route exact path={ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.LIST}>
                 <ListDescriptionAddOffer />
             </Route>
-            <Route exact path={ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.ADD}>
+            <Route exact path={ALL_APP_ROUTES.OFFER.DESCRIPTION_ADD_OFFER.ADD_UPDATE}>
                 <AddUpdateDescriptionAddOffer />
             </Route>
+
+
+            {/*<Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.LIST}>*/}
+                {/*<ListTopHomeSlides />*/}
+            {/*</Route>*/}
+            {/*<Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.ADD_UPDATE}>*/}
+                {/*<AddUpdateTopHomeSlides />*/}
+            {/*</Route>*/}
+            {/*<Route path={ALL_APP_ROUTES.HOME.TOPHOMESLIDES.ADD_UPDATE + '/:id/edit'}>*/}
+                {/*<AddUpdateTopHomeSlides />*/}
+            {/*</Route>*/}
+            <Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.LIST}>
+                <ListTopHomeSlidesImage />
+            </Route>
+            <Route exact path={ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.ADD_UPDATE}>
+                <AddUpdateTopHomeSlidesImage />
+            </Route>
+            <Route path={ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.ADD_UPDATE + '/:id/edit'}>
+                <AddUpdateTopHomeSlidesImage />
+            </Route>
+
 
             <Route exact path={ALL_APP_ROUTES.NEWS_LETTER}>
                 <ListNewsLetter />

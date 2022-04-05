@@ -83,6 +83,27 @@ export default function SiderBar() {
                         )}
                     </Disclosure>
                 </div>
+
+                <div className="">
+                    <Disclosure>
+                        {({ open }) => (
+                            <>
+                                <Disclosure.Button className="p-3 flex justify-between w-full text-sm font-medium text-left hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+                                    <span>Home</span>
+                                    <ChevronUpIcon
+                                        className={`${
+                                            open ? 'transform rotate-180' : ''
+                                            } w-5 h-5 text-purple-500`}
+                                    />
+                                </Disclosure.Button>
+                                <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 divide-y divide-blue-200">
+                                    <div className="p-3 cursor-pointer hover:bg-purple-100" onClick={() => redirectTo(ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.LIST)}>TopHomeSlidesImage</div>
+                                </Disclosure.Panel>
+                            </>
+                        )}
+                    </Disclosure>
+                </div>
+
                 <div className="">
                     <Disclosure>
                         {({ open }) => (
