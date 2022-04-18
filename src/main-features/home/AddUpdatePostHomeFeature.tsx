@@ -3,19 +3,21 @@ import {IRootState} from "../../shared/reducers";
 import {connect} from "react-redux";
 import isEmpty from 'lodash/isEmpty'
 import {useFormik} from "formik";
-import {initialValuesTopHomeSlidesImage, validationSchemaTopHomeSlidesImage} from "./validation/validation-home";
+import {
+    initialValuesPostHomeFeature,
+    validationSchemaPostHomeFeature,
+} from "./validation/validation-home";
 import {dataUrlToFile, getBase64} from "../../shared/utils/utils-functions";
-import {getImageUrl} from "../../shared/utils/image-url";
-import {reset, getEntity, createEntity} from "../../shared/reducers/top-home-slides-image";
+import {reset, getEntity, createEntity} from "../../shared/reducers/post-home-feature.reducer";
 import {useHistory, useParams} from "react-router";
 import {ALL_APP_ROUTES} from "../../core/config/all-app-routes";
 import {CustomSunEditor} from "../../shared/components/sun-editor/CustomSunEditor";
 
-const initialValues = initialValuesTopHomeSlidesImage;
+const initialValues = initialValuesPostHomeFeature;
 
-export interface IAddUpdateTopHomeSlidesImageProps extends StateProps, DispatchProps{}
+export interface IPostHomeFeatureProps extends StateProps, DispatchProps{}
 
-export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageProps) => {
+export const AddUpdatePostHomeFeature = (props: IPostHomeFeatureProps) => {
 
     const [fileState, setFileState] = React.useState('');
     const [imageUpload, setImageUpload] = React.useState<any>(null);
@@ -26,7 +28,7 @@ export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageP
 
     const formik = useFormik({
         initialValues,
-        validationSchema: validationSchemaTopHomeSlidesImage,
+        validationSchema: validationSchemaPostHomeFeature,
         onSubmit: values => {
             const entity = {
                 ...values,
@@ -108,9 +110,9 @@ export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageP
             <form onSubmit={formik.handleSubmit}>
                 <table className="border-collapse border border-slate-400 w-full">
                     <thead className="bg-gray-200">
-                        <tr>
-                            <th className="border border-slate-300 p-3" colSpan={3}>Inputs</th>
-                        </tr>
+                    <tr>
+                        <th className="border border-slate-300 p-3" colSpan={3}>Inputs</th>
+                    </tr>
                     </thead>
                     <tbody className="bg-white">
                     <tr>
@@ -158,10 +160,10 @@ export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageP
 
 
 
-const mapStateToProps = ({topHomeSlidesImages}: IRootState) => ({
-    loadingEntity: topHomeSlidesImages.loadingEntity,
-    entity: topHomeSlidesImages.entity,
-    addSuccess: topHomeSlidesImages.addSuccess,
+const mapStateToProps = ({postHomeFeature}: IRootState) => ({
+    loadingEntity: postHomeFeature.loadingEntity,
+    entity: postHomeFeature.entity,
+    addSuccess: postHomeFeature.addSuccess,
 });
 
 const mapDispatchToProps = {
@@ -173,4 +175,4 @@ const mapDispatchToProps = {
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddUpdateTopHomeSlidesImage);
+export default connect(mapStateToProps, mapDispatchToProps)(AddUpdatePostHomeFeature);

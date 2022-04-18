@@ -1,46 +1,47 @@
-import axios from "axios";
+import axios from 'axios';
+import {defaultValue, IPostHomeFeature} from "../model/post-home-feature.model";
 import {FAILURE, REQUEST, SUCCESS} from "./action-type.util";
-import {defaultValue, ITopHomeSlidesImages} from "../model/top-home-slides-images.model";
-
+import {ITopHomeSlidesImages} from "../model/top-home-slides-images.model";
 
 export const ACTION_TYPES = {
-    FETCH_TOP_HOME_SLIDE_IMAGE_LIST: 'topHomeSlidesImages/FETCH_TOP_HOME_SLIDE_IMAGE_LIST',
-    CREATE_TOP_HOME_SLIDE_IMAGE: 'topHomeSlidesImages/CREATE_TOP_HOME_SLIDE_IMAGE',
-    FETCH_TOP_HOME_SLIDE_IMAGE: 'topHomeSlides/FETCH_TOP_HOME_SLIDE_IMAGE',
-    RESET: 'topHomeSlidesImages/RESET',
+    FETCH_POST_HOME_FEATURE_LIST: 'postHomeFeature/FETCH_POST_HOME_FEATURE_LIST',
+    FETCH_POST_HOME_FEATURE: 'postHomeFeature/FETCH_POST_HOME_FEATURE',
+    CREATE_POST_HOME_FEATURE: 'postHomeFeature/CREATE_CREATE_POST_HOME_FEATURE',
+    UPDATE_CMSHOMEMEDIUM: 'postHomeFeature/UPDATE_CMSHOMEMEDIUM',
+    DELETE_CMSHOMEMEDIUM: 'postHomeFeature/DELETE_CMSHOMEMEDIUM',
+    RESET: 'postHomeFeature/RESET',
 };
 
 const initialState = {
     loadingEntities: false,
     errorMessage: null,
-    entities: [] as ReadonlyArray<ITopHomeSlidesImages>,
+    entities: [] as ReadonlyArray<IPostHomeFeature>,
     loadingEntity: false,
     entity: defaultValue,
-    addSuccess: false,
-    updateSuccess: false,
+    updating: false,
     totalItems: 0,
+    updateSuccess: false,
+    addSuccess: false
 };
 
-export type TopHomeSlidesImagesState = Readonly<typeof initialState>;
-
+export type PostHomeFeatureState = Readonly<typeof initialState>;
 
 // Reducer
 
-export default (state: TopHomeSlidesImagesState = initialState, action: any): TopHomeSlidesImagesState => {
+export default (state: PostHomeFeatureState = initialState, action: any): PostHomeFeatureState => {
     switch (action.type) {
-
-        case REQUEST(ACTION_TYPES.CREATE_TOP_HOME_SLIDE_IMAGE):
+        case REQUEST(ACTION_TYPES.CREATE_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: true
             }
-        case FAILURE(ACTION_TYPES.CREATE_TOP_HOME_SLIDE_IMAGE):
+        case FAILURE(ACTION_TYPES.CREATE_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: false,
                 errorMessage: action.payload,
             }
-        case SUCCESS(ACTION_TYPES.CREATE_TOP_HOME_SLIDE_IMAGE):
+        case SUCCESS(ACTION_TYPES.CREATE_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: false,
@@ -49,18 +50,18 @@ export default (state: TopHomeSlidesImagesState = initialState, action: any): To
             }
 
 
-        case REQUEST(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE_LIST):
+        case REQUEST(ACTION_TYPES.FETCH_POST_HOME_FEATURE_LIST):
             return {
                 ...state,
                 loadingEntities: true
             }
-        case FAILURE(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE_LIST):
+        case FAILURE(ACTION_TYPES.FETCH_POST_HOME_FEATURE_LIST):
             return {
                 ...state,
                 loadingEntities: false,
                 errorMessage: action.payload,
             }
-        case SUCCESS(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE_LIST):
+        case SUCCESS(ACTION_TYPES.FETCH_POST_HOME_FEATURE_LIST):
             return {
                 ...state,
                 loadingEntities: false,
@@ -68,18 +69,18 @@ export default (state: TopHomeSlidesImagesState = initialState, action: any): To
             }
 
 
-        case REQUEST(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE):
+        case REQUEST(ACTION_TYPES.FETCH_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: true
             }
-        case FAILURE(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE):
+        case FAILURE(ACTION_TYPES.FETCH_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: false,
                 errorMessage: action.payload,
             }
-        case SUCCESS(ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE):
+        case SUCCESS(ACTION_TYPES.FETCH_POST_HOME_FEATURE):
             return {
                 ...state,
                 loadingEntity: false,
@@ -92,20 +93,18 @@ export default (state: TopHomeSlidesImagesState = initialState, action: any): To
                 ...initialState,
             };
 
-
         default:
             return state;
-
     }
-}
+};
 
-const apiUrl = 'api/top-home-slides-images';
+const apiUrl = 'api/post-home-feature';
 
 // Actions
 
-export const createEntity: (entity: ITopHomeSlidesImages) => void = (entity: ITopHomeSlidesImages) => async (dispatch: any) => {
+export const createEntity: (entity: IPostHomeFeature) => void = (entity: IPostHomeFeature) => async (dispatch: any) => {
     const result = await dispatch({
-        type: ACTION_TYPES.CREATE_TOP_HOME_SLIDE_IMAGE,
+        type: ACTION_TYPES.CREATE_POST_HOME_FEATURE,
         payload: axios.post(`${apiUrl}/admin/create`, entity),
     });
     return result;
@@ -113,17 +112,17 @@ export const createEntity: (entity: ITopHomeSlidesImages) => void = (entity: ITo
 
 
 export const getEntities = () => {
-    const requestUrl = `${apiUrl}/public/slides`;
+    const requestUrl = `${apiUrl}/admin/list`;
     return {
-        type: ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE_LIST,
-        payload: axios.get<ITopHomeSlidesImages>(`${requestUrl}`),
+        type: ACTION_TYPES.FETCH_POST_HOME_FEATURE_LIST,
+        payload: axios.get<IPostHomeFeature>(`${requestUrl}`),
     };
 };
 
 export const getEntity = (id: number) => {
     const requestUrl = `${apiUrl}/admin/${id}`;
     return {
-        type: ACTION_TYPES.FETCH_TOP_HOME_SLIDE_IMAGE,
+        type: ACTION_TYPES.FETCH_POST_HOME_FEATURE,
         payload: axios.get<ITopHomeSlidesImages>(requestUrl),
     };
 };

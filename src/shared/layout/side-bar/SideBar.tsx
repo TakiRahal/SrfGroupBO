@@ -98,6 +98,7 @@ export default function SiderBar() {
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 divide-y divide-blue-200">
                                     <div className="p-3 cursor-pointer hover:bg-purple-100" onClick={() => redirectTo(ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.LIST)}>TopHomeSlidesImage</div>
+                                    <div className="p-3 cursor-pointer hover:bg-purple-100" onClick={() => redirectTo(ALL_APP_ROUTES.HOME.POST_HOME_FEATURE.LIST)}>PostHomeFeature</div>
                                 </Disclosure.Panel>
                             </>
                         )}

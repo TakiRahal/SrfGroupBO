@@ -32,6 +32,10 @@ export const ALL_APP_ROUTES = {
         TOPHOMESLIDES: {
             LIST: process.env.PUBLIC_URL+'/admin/list-top-home-slides',
             ADD_UPDATE: process.env.PUBLIC_URL+'/admin/add-update-top-home-slides',
+        },
+        POST_HOME_FEATURE: {
+            LIST: process.env.PUBLIC_URL+'/admin/list-post-home-feature',
+            ADD_UPDATE: process.env.PUBLIC_URL+'/admin/add-update-post-home-feature',
         }
     }
 }
