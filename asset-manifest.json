@@ -1,16 +1,26 @@
 {
   "files": {
-    "main.css": "/SrfGroupBO/static/css/main.831186fa.css",
-    "main.js": "/SrfGroupBO/static/js/main.174add93.js",
+    "main.css": "/SrfGroupBO/static/css/main.f2c62f56.css",
+    "main.js": "/SrfGroupBO/static/js/main.97853d01.js",
     "static/js/377.bc34b493.chunk.js": "/SrfGroupBO/static/js/377.bc34b493.chunk.js",
+    "static/media/primeicons.svg": "/SrfGroupBO/static/media/primeicons.c6e2053303524e39530c.svg",
+    "static/media/primeicons.eot": "/SrfGroupBO/static/media/primeicons.7fc4d8e224d1ff1b9c62.eot",
+    "static/media/primeicons.woff": "/SrfGroupBO/static/media/primeicons.449aa8c65cdc5c2a8686.woff",
+    "static/media/primeicons.ttf": "/SrfGroupBO/static/media/primeicons.91bacab1f083f2795272.ttf",
     "service-worker.js": "/SrfGroupBO/service-worker.js",
+    "static/media/roboto-v20-latin-ext_latin-700.woff": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-700.8aba6dc5d991e4367d7a.woff",
+    "static/media/roboto-v20-latin-ext_latin-500.woff": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-500.e492ac63197a57e7f4d3.woff",
+    "static/media/roboto-v20-latin-ext_latin-regular.woff": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-regular.ae804dc012b1b5255474.woff",
+    "static/media/roboto-v20-latin-ext_latin-500.woff2": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-500.0b45721325446d537b54.woff2",
+    "static/media/roboto-v20-latin-ext_latin-700.woff2": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-700.1d1ef7788f0ff084b881.woff2",
+    "static/media/roboto-v20-latin-ext_latin-regular.woff2": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-regular.5cb5c8f08bb4e6cb64c3.woff2",
     "index.html": "/SrfGroupBO/index.html",
-    "main.831186fa.css.map": "/SrfGroupBO/static/css/main.831186fa.css.map",
-    "main.174add93.js.map": "/SrfGroupBO/static/js/main.174add93.js.map",
+    "main.f2c62f56.css.map": "/SrfGroupBO/static/css/main.f2c62f56.css.map",
+    "main.97853d01.js.map": "/SrfGroupBO/static/js/main.97853d01.js.map",
     "377.bc34b493.chunk.js.map": "/SrfGroupBO/static/js/377.bc34b493.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.831186fa.css",
-    "static/js/main.174add93.js"
+    "static/css/main.f2c62f56.css",
+    "static/js/main.97853d01.js"
   ]
 }
