@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SrfGroupBO/static/css/main.f2c62f56.css",
-    "main.js": "/SrfGroupBO/static/js/main.97853d01.js",
+    "main.js": "/SrfGroupBO/static/js/main.2815c444.js",
     "static/js/377.bc34b493.chunk.js": "/SrfGroupBO/static/js/377.bc34b493.chunk.js",
     "static/media/primeicons.svg": "/SrfGroupBO/static/media/primeicons.c6e2053303524e39530c.svg",
     "static/media/primeicons.eot": "/SrfGroupBO/static/media/primeicons.7fc4d8e224d1ff1b9c62.eot",
@@ -16,11 +16,11 @@
     "static/media/roboto-v20-latin-ext_latin-regular.woff2": "/SrfGroupBO/static/media/roboto-v20-latin-ext_latin-regular.5cb5c8f08bb4e6cb64c3.woff2",
     "index.html": "/SrfGroupBO/index.html",
     "main.f2c62f56.css.map": "/SrfGroupBO/static/css/main.f2c62f56.css.map",
-    "main.97853d01.js.map": "/SrfGroupBO/static/js/main.97853d01.js.map",
+    "main.2815c444.js.map": "/SrfGroupBO/static/js/main.2815c444.js.map",
     "377.bc34b493.chunk.js.map": "/SrfGroupBO/static/js/377.bc34b493.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2c62f56.css",
-    "static/js/main.97853d01.js"
+    "static/js/main.2815c444.js"
   ]
 }
