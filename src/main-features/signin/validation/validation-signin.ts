@@ -1,8 +1,9 @@
 import * as Yup from 'yup';
 
 export const initialValuesSignIn = {
-  email: '',
-  password: '',
+    email: '',
+    password: '',
+    rememberMe: false
 };
 
 export const validationSchemaSignIn = Yup.object({

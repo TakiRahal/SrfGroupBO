@@ -16,6 +16,8 @@ import ListTopHomeSlidesImage from "../../main-features/home/ListTopHomeSlidesIm
 import AddUpdateTopHomeSlidesImage from "../../main-features/home/AddUpdateTopHomeSlidesImage";
 import AddUpdatePostHomeFeature from "../../main-features/home/AddUpdatePostHomeFeature";
 import ListPostHomeFeature from "../../main-features/home/ListPostHomeFeature";
+import ListUsers from "../../main-features/user/ListUsers";
+import ListAddress from "../../main-features/address/ListAddress";
 
 export default function LayoutRoutes() {
     return (
@@ -79,8 +81,16 @@ export default function LayoutRoutes() {
             </Route>
 
 
+            <Route exact path={ALL_APP_ROUTES.USER.LIST}>
+                <ListUsers />
+            </Route>
+
             <Route exact path={ALL_APP_ROUTES.NEWS_LETTER}>
                 <ListNewsLetter />
+            </Route>
+
+            <Route exact path={ALL_APP_ROUTES.ADDRESS}>
+                <ListAddress />
             </Route>
 
             {/*<Route path="*">*/}

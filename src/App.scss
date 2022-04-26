@@ -4,10 +4,10 @@
         height: 100%;
     }
     .container-side-bar{
-        max-width: 250px;
+        width: 250px;
+        position: fixed;
     }
-    main{
-        height: 100%;
-        padding-top: 120px;
+    .container-main{
+        margin-left: 250px;
     }
 }

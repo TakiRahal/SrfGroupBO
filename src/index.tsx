@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
@@ -9,6 +8,12 @@ import setupAxiosInterceptors from "./core/config/axios-interceptor";
 import {clearAuthentication} from "./shared/reducers/user-reducer";
 import initStore from './core/config/store';
 import {Provider} from "react-redux";
+
+import "primereact/resources/themes/md-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.min.css";
+import './index.css';
 
 // Store initialize
 const store = initStore();

@@ -3,7 +3,8 @@ import './Header.scss';
 import {IAppProps} from "../../../App";
 import {useHistory} from "react-router";
 import {ALL_APP_ROUTES} from "../../../core/config/all-app-routes";
-import { Menu, Transition } from '@headlessui/react'
+import {InputText} from "primereact/inputtext";
+import {Menubar} from "primereact/menubar";
 
 function EditInactiveIcon(props: any) {
     return (
@@ -42,104 +43,144 @@ function EditActiveIcon(props: any) {
 }
 
 function MyDropdown({logoutCallback}: {logoutCallback: any}) {
+
+    const items = [
+        {
+            label: 'File',
+            icon: 'pi pi-fw pi-file',
+            items: [
+                {
+                    label: 'New',
+                    icon: 'pi pi-fw pi-plus',
+                    items: [
+                        {
+                            label: 'Bookmark',
+                            icon: 'pi pi-fw pi-bookmark'
+                        },
+                        {
+                            label: 'Video',
+                            icon: 'pi pi-fw pi-video'
+                        },
+
+                    ]
+                },
+                {
+                    label: 'Delete',
+                    icon: 'pi pi-fw pi-trash'
+                },
+                {
+                    separator: true
+                },
+                {
+                    label: 'Export',
+                    icon: 'pi pi-fw pi-external-link'
+                }
+            ]
+        },
+        {
+            label: 'Edit',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+                {
+                    label: 'Left',
+                    icon: 'pi pi-fw pi-align-left'
+                },
+                {
+                    label: 'Right',
+                    icon: 'pi pi-fw pi-align-right'
+                },
+                {
+                    label: 'Center',
+                    icon: 'pi pi-fw pi-align-center'
+                },
+                {
+                    label: 'Justify',
+                    icon: 'pi pi-fw pi-align-justify'
+                },
+
+            ]
+        },
+        {
+            label: 'Users',
+            icon: 'pi pi-fw pi-user',
+            items: [
+                {
+                    label: 'New',
+                    icon: 'pi pi-fw pi-user-plus',
+
+                },
+                {
+                    label: 'Delete',
+                    icon: 'pi pi-fw pi-user-minus',
+
+                },
+                {
+                    label: 'Search',
+                    icon: 'pi pi-fw pi-users',
+                    items: [
+                        {
+                            label: 'Filter',
+                            icon: 'pi pi-fw pi-filter',
+                            items: [
+                                {
+                                    label: 'Print',
+                                    icon: 'pi pi-fw pi-print'
+                                }
+                            ]
+                        },
+                        {
+                            icon: 'pi pi-fw pi-bars',
+                            label: 'List'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: 'Events',
+            icon: 'pi pi-fw pi-calendar',
+            items: [
+                {
+                    label: 'Edit',
+                    icon: 'pi pi-fw pi-pencil',
+                    items: [
+                        {
+                            label: 'Save',
+                            icon: 'pi pi-fw pi-calendar-plus'
+                        },
+                        {
+                            label: 'Delete',
+                            icon: 'pi pi-fw pi-calendar-minus'
+                        }
+                    ]
+                },
+                {
+                    label: 'Archieve',
+                    icon: 'pi pi-fw pi-calendar-times',
+                    items: [
+                        {
+                            label: 'Remove',
+                            icon: 'pi pi-fw pi-calendar-minus'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: 'Quit',
+            icon: 'pi pi-fw pi-power-off',
+            command:()=>{
+                logoutCallback();
+            }
+        }
+    ];
+
+    const start = <img alt="logo" src="showcase/images/logo.png" onError={(e: any) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="mr-2"></img>;
+    const end = <InputText placeholder="Search" type="text" />;
+
     return (
-        <div className="w-56 text-right fixed top-16">
-            <Menu as="div" className="relative inline-block text-left">
-                <div>
-                    <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                        Options
-                    </Menu.Button>
-                </div>
-                <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                >
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="px-1 py-1 ">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                    >
-                                        {active ? (
-                                            <EditActiveIcon
-                                                className="w-5 h-5 mr-2"
-                                                aria-hidden="true"
-                                            />
-                                        ) : (
-                                            <EditInactiveIcon
-                                                className="w-5 h-5 mr-2"
-                                                aria-hidden="true"
-                                            />
-                                        )}
-                                        Edit
-                                    </button>
-                                )}
-                            </Menu.Item>
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                    >
-
-                                        Duplicate
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
-                        <div className="px-1 py-1">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                    >
-
-                                        Archive
-                                    </button>
-                                )}
-                            </Menu.Item>
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                    >
-
-                                        Move
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
-                        <div className="px-1 py-1">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button
-                                        className={`${
-                                            active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                        onClick={logoutCallback}
-                                    >
-
-                                        Logout
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
-                    </Menu.Items>
-                </Transition>
-            </Menu>
+        <div className="w-full">
+            <Menubar model={items} start={start} end={end} />
         </div>
     )
 }
@@ -155,11 +196,8 @@ export default function Header(props: IAppProps){
 
     return(
         <header className="header-container">
-            <div className="content-header h-20 m-4 rounded-2xl bg-white shadow-md absolute">
-                Header
-
+            <div className="content-header">
                 <MyDropdown logoutCallback={logoutApp} />
-
             </div>
         </header>
     )

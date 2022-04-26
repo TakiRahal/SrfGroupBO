@@ -5,6 +5,7 @@ import {AllAppConfig} from "../../core/config/all-config";
 import {async} from "q";
 import {ICommentOffer} from "../model/comment-offer.model";
 import {IUser} from "../model/user.model";
+import {IFaq} from "../model/faq.model";
 
 export const ACTION_TYPES = {
     CREATE_ACCOUNT: 'register/CREATE_ACCOUNT',
@@ -13,7 +14,8 @@ export const ACTION_TYPES = {
     GET_SESSION: 'authentication/GET_SESSION',
     GET_PROFILE: 'authentication/GET_PROFILE',
     GET_CURRENT_USER: 'authentication/GET_CURRENT_USER',
-    LOGOUT: 'logout/LOGOUT'
+    LOGOUT: 'logout/LOGOUT',
+    FETCH_USER_LIST: 'user/FETCH_USER_LIST'
 }
 
 const CURRENT_USER = StorageService.local.get(AllAppConfig.VALUE_CURRENT_USER) ? JSON.parse(StorageService.local.get(AllAppConfig.VALUE_CURRENT_USER)) : null;
@@ -42,12 +44,35 @@ const initialState = {
 
     account: {} as any,
     loadingAccount: false,
+
+    entitiesUser: [] as ReadonlyArray<IUser>,
+    loadingEntitiesUser: false,
 }
 
 export type UserState = Readonly<typeof initialState>;
 
 export default (state: UserState = initialState, action: any): UserState => {
     switch (action.type) {
+
+        case REQUEST(ACTION_TYPES.FETCH_USER_LIST):
+            return {
+                ...state,
+                loadingEntitiesUser: true,
+            };
+        case FAILURE(ACTION_TYPES.FETCH_USER_LIST):
+            console.log('action = ', action);
+            return {
+                ...state,
+                loadingEntitiesUser: false,
+            };
+        case SUCCESS(ACTION_TYPES.FETCH_USER_LIST):
+            return {
+                ...state,
+                entitiesUser: action.payload.data.content,
+                loadingEntitiesUser: true,
+            };
+
+
         case REQUEST(ACTION_TYPES.CREATE_ACCOUNT):
             return {
                 ...state,
@@ -211,6 +236,16 @@ export const getCurrentUser: () => void = () => async (dispatch: any) => {
     });
     return result;
 };
+
+
+export const getEntities = (page: number, size: number, queryParams: string) => {
+    const requestUrl = `${apiUrl}admin?page=${page}&size=${size}${queryParams}`;
+    return {
+        type: ACTION_TYPES.FETCH_USER_LIST,
+        payload: axios.get<IFaq>(`${requestUrl}`),
+    };
+};
+
 
 export const logout: () => void = () => (dispatch: any) => {
     clearAuthToken();

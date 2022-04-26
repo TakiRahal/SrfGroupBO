@@ -7,6 +7,12 @@ import {initialValuesSignIn, validationSchemaSignIn} from "./validation/validati
 import {useFormik} from "formik";
 import {ALL_APP_ROUTES} from "../../core/config/all-app-routes";
 import {useHistory} from "react-router";
+import {InputText} from "primereact/inputtext";
+import {classNames} from "primereact/utils";
+import {Password} from "primereact/password";
+import {Divider} from "primereact/divider";
+import {Checkbox} from "primereact/checkbox";
+import {Button} from "primereact/button";
 
 const initialValues = initialValuesSignIn;
 
@@ -22,6 +28,7 @@ export const SignIn = (props: ISignInProps) => {
 
     const {loginAdmin, isAuthenticated, loading} = props;
 
+
     const formik = useFormik({
         initialValues,
         validationSchema: validationSchemaSignIn,
@@ -36,52 +43,56 @@ export const SignIn = (props: ISignInProps) => {
         }
     }, [isAuthenticated]);
 
+    const isFormFieldValid = (name: 'email' | 'password') => !!(formik.touched[name] && formik.errors[name]);
+    const getFormErrorMessage = (name: 'email' | 'password') => {
+        return isFormFieldValid(name) && <small className="p-error">{formik.errors[name]}</small>;
+    };
+
+    const passwordHeader = <h6>Pick a password</h6>;
+    const passwordFooter = (
+        <React.Fragment>
+            <Divider />
+            <p className="mt-2">Suggestions</p>
+            <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: '1.5' }}>
+                <li>At least one lowercase</li>
+                <li>At least one uppercase</li>
+                <li>At least one numeric</li>
+                <li>Minimum 8 characters</li>
+            </ul>
+        </React.Fragment>
+    );
+
     return (
         <div className="container-signin">
-            <div className="flex justify-center">
-                <div className="w-1/4">
-                    <form onSubmit={formik.handleSubmit}>
-
-                        <div className="mt-5 text-gray-700">
-                            <label className="block mb-1" htmlFor="email">Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="text"
-                                placeholder="Email..."
-                                className={formik.touched.email && Boolean(formik.errors.email) ? 'w-full h-10 px-3 text-base placeholder-gray-600 border border-red-700 rounded-lg focus:shadow-outline' :
-                                    'w-full h-10 px-3 text-base placeholder-gray-600 border border-green-700 rounded-lg focus:shadow-outline'}
-                                aria-describedby="passwordHelp"
-                                value={formik.values.email}
-                                onChange={formik.handleChange}/>
-                            <span className="text-xs text-red-700" id="passwordHelp">{formik.touched.email && formik.errors.email}</span>
+            <div className="flex justify-content-center">
+                <div className="card">
+                    <h5 className="text-center">LogIn</h5>
+                    <form onSubmit={formik.handleSubmit} className="p-fluid">
+                        <div className="field">
+                            <span className="p-float-label p-input-icon-right">
+                                <i className="pi pi-envelope" />
+                                <InputText id="email" name="email" value={formik.values.email} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('email') })} />
+                                <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid('email') })}>Email*</label>
+                            </span>
+                            {getFormErrorMessage('email')}
+                        </div>
+                        <div className="field">
+                            <span className="p-float-label">
+                                <Password id="password" name="password" value={formik.values.password} onChange={formik.handleChange} toggleMask
+                                          className={classNames({ 'p-invalid': isFormFieldValid('password') })} header={passwordHeader} footer={passwordFooter} />
+                                <label htmlFor="password" className={classNames({ 'p-error': isFormFieldValid('password') })}>Password*</label>
+                            </span>
+                            {getFormErrorMessage('password')}
+                        </div>
+                        <div className="field-checkbox">
+                            <Checkbox inputId="accept" name="accept" checked={formik.values.rememberMe} onChange={formik.handleChange}/>
+                            <label htmlFor="accept">Remember Me</label>
                         </div>
 
-                        <div className="mt-5 text-gray-700">
-                            <label className="block mb-1" htmlFor="password">Password</label>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                placeholder="Password..."
-                                className={formik.touched.password && Boolean(formik.errors.password) ? 'w-full h-10 px-3 text-base placeholder-gray-600 border border-red-700 rounded-lg focus:shadow-outline' :
-                                    'w-full h-10 px-3 text-base placeholder-gray-600 border border-green-700 rounded-lg focus:shadow-outline'}
-                                aria-describedby="passwordHelp"
-                                value={formik.values.password}
-                                onChange={formik.handleChange}/>
-                            <span className="text-xs text-red-700" id="passwordHelp">{formik.touched.password && formik.errors.password}</span>
-                        </div>
-
-                        <div className="mt-5">
-                            <button className="px-6 py-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100 w-full"
-                                    type="submit">
-                                Login
-                            </button>
-                        </div>
+                        <Button type="submit" label="Submit" className="mt-2" />
                     </form>
                 </div>
             </div>
-
         </div>
     );
 }

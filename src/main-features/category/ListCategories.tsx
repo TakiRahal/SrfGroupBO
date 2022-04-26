@@ -4,10 +4,10 @@ import {ALL_APP_ROUTES} from "../../core/config/all-app-routes";
 import {connect} from "react-redux";
 import {IRootState} from "../../shared/reducers";
 import {
-    getPublicEntities, reset as resetCategory,
+    getPublicEntities, importEntities, reset as resetCategory,
 } from "../../shared/reducers/category.reducer";
 import {ICategory} from "../../shared/model/category.model";
-import ModalComponent from "../../shared/components/modal/modal.component";
+import {Button} from "primereact/button";
 
 
 export interface IListCategoriesProps extends StateProps, DispatchProps{}
@@ -26,8 +26,16 @@ export const ListCategories = (props: IListCategoriesProps) => {
     }, [])
 
     React.useEffect(() => {
-        console.log('entitiesCategory ', props.entitiesCategory);
-    }, [props.entitiesCategory])
+        console.log('props.importSuccess ', props.importSuccess);
+        if(props.importSuccess){
+            props.resetCategory();
+            props.getPublicEntities(0, 1, '');
+        }
+    }, [props.importSuccess])
+
+    const importCategories = () => {
+        props.importEntities();
+    }
 
     return (
         <div>
@@ -36,10 +44,8 @@ export const ListCategories = (props: IListCategoriesProps) => {
                     List of categories
                 </div>
                 <div className="">
-                    <button className="px-6 py-2  my-2 rounded bg-stone-400 hover:bg-stone-500 text-stone-100"
-                            onClick={() => redirectTo(ALL_APP_ROUTES.CATEGORY.ADD_UPDATE)}>
-                        Add new Category
-                    </button>
+                    <Button label="Import " className="p-button-success" icon="pi pi-check" onClick={() => importCategories()}/>
+                    <Button label="Add new Category" className="p-button-link" onClick={() => redirectTo(ALL_APP_ROUTES.CATEGORY.ADD_UPDATE)}/>
                 </div>
             </div>
 
@@ -67,7 +73,6 @@ export const ListCategories = (props: IListCategoriesProps) => {
                                             onClick={() => redirectTo(ALL_APP_ROUTES.CATEGORY.ADD_UPDATE+'/'+category.id+'/edit')}>Edit</button>
                                     <button className="px-6 py-2 rounded bg-rose-400 hover:bg-rose-500 text-rose-100"
                                             onClick={() => setShowModal(true)}>Delete</button>
-                                    <ModalComponent showModal={showModal}/>
                                 </td>
                             </tr>
                         </tbody>
@@ -85,11 +90,13 @@ const mapStateToProps = ({category}: IRootState) => ({
     loadingEntitiesCategory: category.loadingEntities,
     entitiesCategory: category.entities,
     totalItemsCategory: category.totalItems,
+    importSuccess: category.importSuccess
 });
 
 const mapDispatchToProps = {
     getPublicEntities,
-    resetCategory
+    resetCategory,
+    importEntities
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

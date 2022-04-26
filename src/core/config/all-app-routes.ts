@@ -37,5 +37,9 @@ export const ALL_APP_ROUTES = {
             LIST: process.env.PUBLIC_URL+'/admin/list-post-home-feature',
             ADD_UPDATE: process.env.PUBLIC_URL+'/admin/add-update-post-home-feature',
         }
-    }
+    },
+    USER: {
+        LIST: process.env.PUBLIC_URL+'/admin/list-user'
+    },
+    ADDRESS: process.env.PUBLIC_URL+'/admin/list-address'
 }

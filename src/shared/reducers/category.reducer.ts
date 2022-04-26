@@ -8,6 +8,7 @@ export const ACTION_TYPES = {
     FETCH_PUBLIC_CATEGORY_LIST: 'category/FETCH_PUBLIC_CATEGORY_LIST',
     FETCH_CATEGORY: 'category/FETCH_CATEGORY',
     CREATE_CATEGORY: 'category/CREATE_CATEGORY',
+    IMPORT_CATEGORY: 'category/IMPORT_CATEGORY',
     UPDATE_CATEGORY: 'category/UPDATE_CATEGORY',
     PARTIAL_UPDATE_CATEGORY: 'category/PARTIAL_UPDATE_CATEGORY',
     DELETE_CATEGORY: 'category/DELETE_CATEGORY',
@@ -21,6 +22,7 @@ const initialState = {
     loadingEntities: false,
     addSuccess: false,
     updateSuccess: false,
+    importSuccess: false,
     errorMessage: null,
     totalItems: 0,
 }
@@ -91,6 +93,23 @@ export default (state: CategoryState = initialState, action: any): CategoryState
             }
 
 
+        case REQUEST(ACTION_TYPES.IMPORT_CATEGORY):
+            return {
+                ...state,
+                importSuccess: false
+            }
+        case FAILURE(ACTION_TYPES.IMPORT_CATEGORY):
+            return {
+                ...state,
+                importSuccess: false,
+            }
+        case SUCCESS(ACTION_TYPES.IMPORT_CATEGORY):
+            return {
+                ...state,
+                importSuccess: true,
+            }
+
+
         case ACTION_TYPES.RESET:
             return {
                 ...initialState,
@@ -134,6 +153,14 @@ export const updateEntity: (entity: ICategory) => void = (entity: ICategory) => 
     const result = await dispatch({
         type: ACTION_TYPES.CREATE_CATEGORY,
         payload: axios.put(`${apiUrl}/admin/update`, entity),
+    });
+    return result;
+};
+
+export const importEntities: () => void = () => async (dispatch: any) => {
+    const result = await dispatch({
+        type: ACTION_TYPES.IMPORT_CATEGORY,
+        payload: axios.get(`${apiUrl}/admin/import`),
     });
     return result;
 };

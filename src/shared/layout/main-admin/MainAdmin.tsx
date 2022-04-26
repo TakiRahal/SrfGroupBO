@@ -10,17 +10,48 @@ import {IAppProps} from "../../../App";
 
 export default function MainAdmin(props: IAppProps){
     return (
-        <div className="flex flex-row container-app">
-            <div className="basis-1/5 container-side-bar rounded-r-lg shadow-md">
+        <div className="container-app">
+
+            <div className="container-side-bar bg-blue-200 text-white">
                 <SiderBar/>
             </div>
-            <div className="basis-full bg-slate-50 relative">
+            <div className="container-main bg-black-alpha-10">
                 <Header {...props}/>
                 <main className="m-4">
                     <LayoutRoutes/>
                     <Footer/>
                 </main>
             </div>
+
+
+            {/*<div className="flex flex-row flex-wrap">*/}
+                {/*<div className="container-side-bar flex bg-blue-200 text-white">*/}
+                    {/*<SiderBar/>*/}
+                {/*</div>*/}
+                {/*<div className="flex-grow-1 bg-black-alpha-10">*/}
+                    {/*<Header {...props}/>*/}
+                    {/*<main className="m-4">*/}
+                        {/*<LayoutRoutes/>*/}
+                        {/*<Footer/>*/}
+                    {/*</main>*/}
+                {/*</div>*/}
+            {/*</div>*/}
+            {/*<div className="flex-shrink-1 bg-blue-200 flex container-side-bar">*/}
+                {/*<SiderBar/>*/}
+            {/*</div>*/}
+            {/*<div className="flex-grow-1 bg-black-alpha-10 container-main">*/}
+                {/*<Header {...props}/>*/}
+            {/*</div>*/}
+            {/*<div className="container-side-bar">*/}
+                {/*<SiderBar/>*/}
+            {/*</div>*/}
+            {/*<div className="container-main">*/}
+                {/*<Header {...props}/>*/}
+                {/*<main className="m-4">*/}
+                    {/*<LayoutRoutes/>*/}
+                    {/*<Footer/>*/}
+                {/*</main>*/}
+            {/*</div>*/}
         </div>
     );
 }
