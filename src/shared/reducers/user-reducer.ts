@@ -15,7 +15,10 @@ export const ACTION_TYPES = {
     GET_PROFILE: 'authentication/GET_PROFILE',
     GET_CURRENT_USER: 'authentication/GET_CURRENT_USER',
     LOGOUT: 'logout/LOGOUT',
-    FETCH_USER_LIST: 'user/FETCH_USER_LIST'
+    FETCH_USER_LIST: 'user/FETCH_USER_LIST',
+    BLOCKED_UNBLOCK_USER: 'user/BLOCKED_USER',
+    ADD_REMOVE_ADMIN_USER: 'user/ADD_REMOVE_ADMIN_USER',
+    RESET_LIST_USERS: 'user/RESET_LIST_USERS'
 }
 
 const CURRENT_USER = StorageService.local.get(AllAppConfig.VALUE_CURRENT_USER) ? JSON.parse(StorageService.local.get(AllAppConfig.VALUE_CURRENT_USER)) : null;
@@ -47,6 +50,9 @@ const initialState = {
 
     entitiesUser: [] as ReadonlyArray<IUser>,
     loadingEntitiesUser: false,
+
+    blockedUnblockedUserSuccess: false,
+    addRemoveAdminSuccess: false
 }
 
 export type UserState = Readonly<typeof initialState>;
@@ -165,11 +171,51 @@ export default (state: UserState = initialState, action: any): UserState => {
             };
 
 
+        case REQUEST(ACTION_TYPES.BLOCKED_UNBLOCK_USER):
+            return {
+                ...state,
+                blockedUnblockedUserSuccess: false,
+            };
+        case FAILURE(ACTION_TYPES.BLOCKED_UNBLOCK_USER):
+            return {
+                ...state,
+                blockedUnblockedUserSuccess: false,
+            };
+        case SUCCESS(ACTION_TYPES.BLOCKED_UNBLOCK_USER):
+            return {
+                ...state,
+                blockedUnblockedUserSuccess: true,
+            };
+
+
+        case REQUEST(ACTION_TYPES.ADD_REMOVE_ADMIN_USER):
+            return {
+                ...state,
+                addRemoveAdminSuccess: false,
+            };
+        case FAILURE(ACTION_TYPES.ADD_REMOVE_ADMIN_USER):
+            return {
+                ...state,
+                addRemoveAdminSuccess: false,
+            };
+        case SUCCESS(ACTION_TYPES.ADD_REMOVE_ADMIN_USER):
+            return {
+                ...state,
+                addRemoveAdminSuccess: true,
+            };
+
+
         case ACTION_TYPES.LOGOUT:
             return {
                 ...initialState,
                 isAuthenticated: false,
                 currentUser: {}
+            };
+
+        case ACTION_TYPES.RESET_LIST_USERS:
+            return {
+                ...state,
+                entitiesUser: []
             };
 
         default:
@@ -239,13 +285,29 @@ export const getCurrentUser: () => void = () => async (dispatch: any) => {
 
 
 export const getEntities = (page: number, size: number, queryParams: string) => {
-    const requestUrl = `${apiUrl}admin?page=${page}&size=${size}${queryParams}`;
+    const requestUrl = `${apiUrl}admin/list-users?page=${page}&size=${size}${queryParams}`;
     return {
         type: ACTION_TYPES.FETCH_USER_LIST,
         payload: axios.get<IFaq>(`${requestUrl}`),
     };
 };
 
+
+export const blockedUnblockedUser: (userId: number, blockUnblock: string) => void = (userId: number, blockUnblock: string) => async (dispatch: any) => {
+    const result = await dispatch({
+        type: ACTION_TYPES.BLOCKED_UNBLOCK_USER,
+        payload: axios.post(`${apiUrl}admin/blocked-user/${userId}`, blockUnblock, { headers: { ['Content-Type']: 'text/plain' }}),
+    });
+    return result;
+};
+
+export const addRemoveAdmin: (userId: number, addRemove: string) => void = (userId: number, addRemove: string) => async (dispatch: any) => {
+    const result = await dispatch({
+        type: ACTION_TYPES.ADD_REMOVE_ADMIN_USER,
+        payload: axios.post(`${apiUrl}super-admin/add-remove-admin/${userId}`, addRemove, { headers: { ['Content-Type']: 'text/plain' }}),
+    });
+    return result;
+};
 
 export const logout: () => void = () => (dispatch: any) => {
     clearAuthToken();
@@ -272,3 +334,7 @@ export const clearAuthentication = (messageKey: string) => (dispatch: any, getSt
     //     type: ACTION_TYPES.CLEAR_AUTH,
     // });
 };
+
+export const resetListUsers = () => ({
+    type: ACTION_TYPES.RESET_LIST_USERS,
+});

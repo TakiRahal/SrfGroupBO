@@ -104,6 +104,26 @@ export async function dataUrlToFile(dataUrl: string, fileName: string): Promise<
 }
 
 
+/**
+ *
+ * @param {string[]} authorities
+ * @param {string[]} hasAnyAuthorities
+ * @returns {any}
+ */
+export const hasAnyAuthority = (authorities: {name: string}[], hasAnyAuthorities: string[]) => {
+    if (authorities && authorities.length !== 0) {
+        if (hasAnyAuthorities.length === 0) {
+            return false;
+        }
+        return hasAnyAuthorities.some(auth => {
+            return authorities.some((role) => {
+                return role.name.includes(auth);
+            });
+        });
+    }
+};
+
+
 export const convertDateTimeFromServer = (date: Date) => (date ? dayjs(date).format(APP_LOCAL_DATETIME_FORMAT) : null);
 
 export const convertDateTimeToServer = (date: Date) => (date ? dayjs(date).toDate() : null);

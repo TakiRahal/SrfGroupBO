@@ -68,7 +68,7 @@ export const AddUpdateTopHomeSlidesImage = (props: IAddUpdateTopHomeSlidesImageP
     React.useEffect(() => {
         if(props.addSuccess){
             props.reset();
-            history.push(ALL_APP_ROUTES.HOME.POST_HOME_FEATURE.LIST);
+            history.push(ALL_APP_ROUTES.HOME.TOPHOMESLIDESIMAGE.LIST);
         }
     }, [props.addSuccess])
 

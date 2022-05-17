@@ -8,6 +8,8 @@ import {
 } from "../../shared/reducers/category.reducer";
 import {ICategory} from "../../shared/model/category.model";
 import {Button} from "primereact/button";
+import {ListDragDropCategories} from "./ui-segments/ListDragDropCategories";
+import './ListCategories.scss';
 
 
 export interface IListCategoriesProps extends StateProps, DispatchProps{}
@@ -48,6 +50,10 @@ export const ListCategories = (props: IListCategoriesProps) => {
                     <Button label="Add new Category" className="p-button-link" onClick={() => redirectTo(ALL_APP_ROUTES.CATEGORY.ADD_UPDATE)}/>
                 </div>
             </div>
+
+            {
+                props.entitiesCategory.length ? <ListDragDropCategories listCategories={props.entitiesCategory}/> : null
+            }
 
             <table className="border-collapse border border-slate-400 w-full">
                 <thead className="bg-gray-200">

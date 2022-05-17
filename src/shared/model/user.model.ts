@@ -9,7 +9,7 @@ export interface IUser {
     activated?: boolean;
     imageUrl?: string;
     langKey?: string;
-    authorities?: any[];
+    authorities?: {name: string}[];
     createdBy?: string;
     createdDate?: Date | null;
     lastModifiedBy?: string;
@@ -18,6 +18,7 @@ export interface IUser {
     sourceProvider?: string;
     address?: IAddress;
     phone?: string;
+    blockedByAdmin?: boolean;
 }
 
 export const defaultValue: Readonly<IUser> = {
@@ -34,7 +35,8 @@ export const defaultValue: Readonly<IUser> = {
     lastModifiedBy: '',
     lastModifiedDate: null,
     password: '',
-    phone: ''
+    phone: '',
+    blockedByAdmin: false
 };
 
 export interface IGooglePlus {
