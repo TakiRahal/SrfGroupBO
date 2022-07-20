@@ -18,10 +18,11 @@ const reducer = {
 
     importAddress: (state: any) => {
         state.address.loadingImport = true;
+        state.address.importSuccess = false;
     },
     importAddressSuccess: (state: any, action: any) => {
         state.address.loadingImport = false;
-        state.address.inportSuccess = true;
+        state.address.importSuccess = true;
     },
     importAddressFailure: (state: any, action: PayloadAction) => {
         state.address.loadingImport = false;

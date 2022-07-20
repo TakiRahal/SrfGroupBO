@@ -41,7 +41,7 @@ export default function ListCategories(){
             dispatch(resetCategories({}));
             dispatch(fetchCategories({
                 page: 0,
-                size: 10,
+                size: 20,
                 queryParams: ''
             }))
         }

@@ -6,7 +6,7 @@ import {initialValuesFaqAddUpdate, validationSchemaFaqAddUpdaten} from "../../li
 import {useFormik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
-import {addFaq, addSuccessFaq, entitiesFaq, entityFaq} from "../../src/store/faq/slice";
+import {addFaq, addSuccessFaq, entitiesFaq, entityFaq, resetFaq} from "../../src/store/faq/slice";
 
 const initialValues = initialValuesFaqAddUpdate;
 
@@ -28,6 +28,7 @@ export default function AddUpdate(){
 
     React.useEffect(() => {
         if(addSuccessFaqSelector){
+            dispatch(resetFaq({}));
             router.push('/faq');
         }
     }, [addSuccessFaqSelector]);

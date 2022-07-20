@@ -18,10 +18,11 @@ const reducer = {
 
     importCategories: (state: any) => {
         state.category.loadingImport = true;
+        state.category.importSuccess = false;
     },
     importCategoriesSuccess: (state: any, action: any) => {
         state.category.loadingImport = false;
-        state.category.inportSuccess = true;
+        state.category.importSuccess = true;
     },
     importCategoriesFailure: (state: any, action: PayloadAction) => {
         state.category.loadingImport = false;

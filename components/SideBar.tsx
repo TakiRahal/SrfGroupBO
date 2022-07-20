@@ -87,6 +87,11 @@ const SideBar = () => (
                             <a>NewsLetter</a>
                         </Link>
                     </li>
+                    <li className="py-4">
+                        <Link href="/declaration">
+                            <a>Declaration</a>
+                        </Link>
+                    </li>
                 </ul>
             </AccordionTab>
 

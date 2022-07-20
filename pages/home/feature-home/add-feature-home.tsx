@@ -37,7 +37,6 @@ export default function AddUpdateFeatureHome(){
                 image: fileState,
             }
             dispatch(addFeatureHome({...entity}))
-            // props.createEntity(entity);
         },
     });
 
