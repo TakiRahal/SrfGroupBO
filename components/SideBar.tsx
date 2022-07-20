@@ -73,7 +73,7 @@ const SideBar = () => (
                         </Link>
                     </li>
                     <li className="py-4">
-                        <Link href="/about">
+                        <Link href="/about-us">
                             <a>About US</a>
                         </Link>
                     </li>

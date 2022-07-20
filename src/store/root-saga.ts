@@ -7,6 +7,7 @@ import contactUsSaga from "./contact-us/saga";
 import faqSaga from "./faq/saga";
 import newsLetterSaga from "./news-letter/saga";
 import declarationProblemSaga from "./declaration/saga";
+import aboutUsSaga from "./about-us/saga";
 
 
 export default function* rootSaga() {
@@ -19,6 +20,7 @@ export default function* rootSaga() {
         fork(faqSaga),
         fork(newsLetterSaga),
         fork(declarationProblemSaga),
+        fork(aboutUsSaga),
     ]);
 }
 
