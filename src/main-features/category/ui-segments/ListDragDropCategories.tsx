@@ -122,8 +122,8 @@ export class ListDragDropCategories extends Component<any, any> {
                                                     {category.titleEn}
                                                 </div>
                                                 <div className="item-header-list">
-                                                    <Button label="Submit" aria-label="Submit" className="p-button-success p-button-sm mr-1" />
-                                                    <Button label="Submit" aria-label="Submit" className="p-button-danger p-button-sm" />
+                                                    <Button label="Edit" aria-label="Edit" className="p-button-success p-button-sm mr-1" />
+                                                    <Button label="Delete" aria-label="Delete" className="p-button-danger p-button-sm" />
                                                 </div>
                                             </div>
                                         </div>
