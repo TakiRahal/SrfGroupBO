@@ -28,7 +28,7 @@ const SideBar = () => (
                 <ul>
                     <li>
                         <Link href="/">
-                            <a>Home</a>
+                            <a>List offers</a>
                         </Link>
                     </li>
                     <li>
@@ -41,9 +41,9 @@ const SideBar = () => (
                             <a>First Post</a>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/post/second">
-                            <a>Second Post</a>
+                    <li className="py-4">
+                        <Link href="/offer/description-new-offer">
+                            <a>Description new offer</a>
                         </Link>
                     </li>
                 </ul>

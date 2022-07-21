@@ -8,6 +8,7 @@ import {faqSlice} from "./faq/slice";
 import {newsLetterSlice} from "./news-letter/slice";
 import {declarationProblemSlice} from "./declaration/slice";
 import {aboutUsSlice} from "./about-us/slice";
+import {offerSlice} from "./offer/slice";
 
 const rootReducer = combineReducers({
     user: userSlice.reducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     faq: faqSlice.reducer,
     newsLetter: newsLetterSlice.reducer,
     declarationProblem: declarationProblemSlice.reducer,
-    aboutUs: aboutUsSlice.reducer
+    aboutUs: aboutUsSlice.reducer,
+    offer: offerSlice.reducer
 })
 
 export default rootReducer;
