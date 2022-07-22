@@ -54,7 +54,6 @@ export default function Faq(){
                         <th className="border border-slate-300">Actions</th>
                     </tr>
                     </thead>
-
                     {
                         entitiesFaqSelector.map((faq: any, i: number) => (
                             <tbody className="bg-white" key={`entity-${i}`}>
@@ -83,7 +82,6 @@ export default function Faq(){
                             </tbody>
                         ))
                     }
-
                 </table>
             </main>
             <Footer />
